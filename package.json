@@ -1,0 +1,28 @@
+{
+    "name": "agilite-node-red",
+    "private": true,
+    "version": "6.4.0",
+    "description": "Agilit-e Node-RED",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "author": "Node-RED/Agilit-e",
+    "license": "Apache-2.0",
+    "repository": {},
+    "engines": {
+        "node": "10.15.2"
+    },
+    "dependencies": {
+        "axios": "0.19.0",
+        "compression": "1.7.4",
+        "dotenv": "8.0.0",
+        "express": "4.17.1",
+        "node-red": "0.20.7",
+        "node-red-contrib-agilite": "6.4.1",
+        "node-red-contrib-agilite-utils": "6.4.1",
+        "node-red-contrib-fullsplitter": "0.0.2",
+        "node-red-contrib-globalgetset": "2.0.3",
+        "when": "3.7.8"
+    }
+}
