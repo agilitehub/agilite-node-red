@@ -1,0 +1,19 @@
+{
+    "serverPort": 80,
+    "websiteUrl": "https://agilite.io",
+    "portalUrl": "http://127.0.0.1:6013",
+    "title": "Agilit-e Node-RED",
+    "nodeModules": {
+        "lodash": false,
+        "type-detect": false,
+        "moment": false
+    },
+    "authService":{
+        "method": "post",
+        "baseUrl": "http://127.0.0.1:6010",
+        "routeUrl": "/user/authenticate",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

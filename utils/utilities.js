@@ -32,4 +32,24 @@ const loadConfig = function(callback){
 
   return null;
 };
+
+const generateModuleList = function(nodeModules) {
+  let modules = {}
+
+  if (nodeModules) {
+    for(let prop in nodeModules){
+      if (nodeModules[prop] && nodeModules[prop] === true) {
+        try {
+          modules[prop] = require(prop)
+        } catch (e) {
+          delete nodeModules[prop]
+        }
+      }
+    }
+  }
+  
+  return modules
+}
+
 exports.loadConfig = loadConfig;
+exports.generateModuleList = generateModuleList;

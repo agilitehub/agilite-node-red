@@ -6,6 +6,7 @@ var http = require('http').Server(app);
 var RED = require("node-red");
 const compression = require('compression');
 const Utils = require('./utils/utilities');
+const config = require('./config/config');
 
 let settings = {};
 
@@ -20,7 +21,7 @@ Utils.loadConfig(function(){
         flowFile: 'flows.json',
         httpRequestTimeout: 300000,
         adminAuth: require("./user-authentication"),
-        functionGlobalContext: {},
+        functionGlobalContext: Utils.generateModuleList(config.nodeModules),
         httpNodeCors: { origin: "*", methods: ['GET','PUT','POST','DELETE'] },
         editorTheme: {
             projects:{
