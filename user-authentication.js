@@ -1,46 +1,67 @@
-const axios = require('axios');
-const Globals = require('./utils/globals');
+const axios = require('axios')
+const Config = require('./config/config.json')
 
 module.exports = {
-  type: "credentials",
-  users: function(username) {
-      return new Promise(function(resolve) {
-        var user = { username: username, permissions: "*" };
-        resolve(user);
-      });
+  type: 'credentials',
+  users: function (username) {
+    return new Promise(function (resolve) {
+      if (!Config || !Config.users) {
+        resolve(null)
+      } else {
+        resolve(_returnUserObject(Config.users, username))
+      }
+    })
   },
-  authenticate: function(username,password) {
-      return new Promise(function(resolve) {
-        if(Globals.config === null){
-          resolve(null);
-        }else{
-          var user = null;
-          var params = {
-            method: Globals.config.authService.method,
-            url:Globals.config.authService.baseUrl + Globals.config.authService.routeUrl,
-            headers:Globals.config.authService.headers,
-            data:{
-              credentialsBase64:Buffer.from(username + ":" + password).toString('base64'),
-              email:username,
-              password:password
-            }
-          };
-          
-          axios.request(params)
-          .then(function (response) {
-            user = { username: username, permissions: "*" };
-            resolve(user);
-          }).catch(function (error) {
-            console.log("Authentication Error");
-            console.log(error);
-            resolve(null);
-          });          
+  authenticate: function (email, password) {
+    return new Promise(function (resolve) {
+      if (!Config || !Config.users) {
+        resolve(null)
+      } else {
+        const params = {
+          method: Config.authService.method,
+          url: Config.authService.baseUrl + Config.authService.routeUrl,
+          headers: Config.authService.headers,
+          data: {
+            credentialsBase64: Buffer.from(email + ':' + password).toString('base64'),
+            email,
+            password: password
+          }
         }
-      });
+
+        axios.request(params)
+          .then(function (response) {
+            resolve(_returnUserObject(Config.users, email))
+          }).catch(function (error) {
+            if (error.response) {
+              console.log(error.response.data)
+            } else if (error.request) {
+              console.log(error.request)
+            } else {
+              console.log('Error', error.message)
+            }
+
+            resolve(null)
+          })
+      }
+    })
   },
-  default: function() {
-      return new Promise(function(resolve) {
-          resolve(null);
-      });
+  default: function () {
+    return new Promise(function (resolve) {
+      resolve(null)
+    })
   }
+}
+
+// PRIVATE FUNCTIONS
+const _returnUserObject = (users, username) => {
+  let result = null
+
+  for (const x in users) {
+    if (users[x].username === username) {
+      result = users[x]
+      break
+    }
+  }
+
+  return result
 }
