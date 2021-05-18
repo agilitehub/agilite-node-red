@@ -1,3 +1,5 @@
+'use strict'
+
 const generateModuleList = function (nodeModules) {
   const modules = {}
 

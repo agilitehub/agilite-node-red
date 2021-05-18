@@ -1,19 +1,54 @@
 {
-    "serverPort": 80,
-    "websiteUrl": "https://agilite.io",
-    "portalUrl": "http://127.0.0.1:6013",
-    "title": "Agilit-e Node-RED",
-    "nodeModules": {
-        "lodash": false,
-        "type-detect": false,
-        "moment": false
+    "serverPort": 6011,
+    "flowsDirName": "flows",
+    "functionNodeModules": {
+      "lodash": false,
+      "type-detect": false,
+      "moment": false,
+      "date-fns": false,
+      "date-fns-tz": false,
+      "moment-timezone": false
     },
-    "authService":{
-        "method": "post",
-        "baseUrl": "http://127.0.0.1:6010",
-        "routeUrl": "/user/authenticate",
-        "headers": {
-            "Content-Type": "application/json"
+    "nodeRedSettings": {
+      "httpAdminRoot": "/",
+      "httpNodeRoot": "/api",
+      "flowFile": "flows.json",
+      "httpRequestTimeout": 300000,
+      "httpNodeCors": {
+        "origin": "*",
+        "methods": ["GET", "PUT", "POST", "DELETE"]
+      },
+      "editorTheme": {
+        "projects": {
+          "enabled": false
+        },
+        "page": {
+          "title": "Agilit-e Node-RED"
+        },
+        "header": {
+          "title": "Agilit-e Node-RED",
+          "url": "https://agilite.io"
         }
+      },
+      "flowFilePretty": true,
+      "credentialSecret": "agilite-node-red"
+    },
+    "authorization": {
+      "enabled": false,
+      "axiosConfig": {},
+      "users": []
+    },
+    "agiliteStorage": {
+      "enabled": false,
+      "apiServerUrl": "",
+      "apiKey": ""
+    },
+    "sentry": {
+      "enabled": false,
+      "config": {
+        "dsn": "",
+        "environment": "",
+        "tracesSampleRate": 1.0
+      }
     }
-}
+  }

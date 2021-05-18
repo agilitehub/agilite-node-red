@@ -1,37 +1,32 @@
 const axios = require('axios')
-const Config = require('./config/config.json')
+const Globals = require('./utils/globals')
 
 module.exports = {
   type: 'credentials',
-  users: function (username) {
-    return new Promise(function (resolve) {
-      if (!Config || !Config.users) {
+  users: (username) => {
+    return new Promise((resolve) => {
+      if (!Globals.config.authorization || !Globals.config.authorization.users) {
         resolve(null)
       } else {
-        resolve(_returnUserObject(Config.users, username))
+        resolve(_returnUserObject(Globals.config.authorization.users, username))
       }
     })
   },
-  authenticate: function (email, password) {
-    return new Promise(function (resolve) {
-      if (!Config || !Config.users) {
+  authenticate: (email, password) => {
+    return new Promise((resolve) => {
+      if (!Globals.config.authorization || !Globals.config.authorization.users) {
         resolve(null)
       } else {
-        const params = {
-          method: Config.authService.method,
-          url: Config.authService.baseUrl + Config.authService.routeUrl,
-          headers: Config.authService.headers,
-          data: {
-            credentialsBase64: Buffer.from(email + ':' + password).toString('base64'),
-            email,
-            password: password
-          }
-        }
+        const config = Globals.config.authorization.axiosConfig || {}
 
-        axios.request(params)
-          .then(function (response) {
-            resolve(_returnUserObject(Config.users, email))
-          }).catch(function (error) {
+        if (!config.headers) config.headers = {}
+        config.headers.email = email
+        config.headers.password = password
+
+        axios.request(config)
+          .then((response) => {
+            resolve(_returnUserObject(Globals.config.authorization.users, email))
+          }).catch((error) => {
             if (error.response) {
               console.log(error.response.data)
             } else if (error.request) {
@@ -45,8 +40,8 @@ module.exports = {
       }
     })
   },
-  default: function () {
-    return new Promise(function (resolve) {
+  default: () => {
+    return new Promise((resolve) => {
       resolve(null)
     })
   }
