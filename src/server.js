@@ -16,10 +16,10 @@ const Utilities = require('./utils/utilities')
 const server = HTTP.createServer(App)
 
 // Setup Node-RED Settings
-const nodeRedSettings = Globals.config.nodeRedSettings || {}
+const nodeRedSettings = Globals.config.nodeRedSettings || Enums.NODE_RED_SETTINGS_DEFAULT
 
 if (!Globals.config.flowsDirName) Globals.config.flowsDirName = Enums.DEFAULT_FLOWS_DIR_NAME
-nodeRedSettings.userDir = Path.join(__dirname, `/${Globals.config.flowsDirName}/`)
+nodeRedSettings.userDir = Path.join(__dirname, `../${Globals.config.flowsDirName}/`)
 
 if (Globals.config.authorization && Globals.config.authorization.enabled) {
   nodeRedSettings.adminAuth = require('./user-authentication')

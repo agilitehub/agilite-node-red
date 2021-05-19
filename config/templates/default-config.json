@@ -1,5 +1,5 @@
 {
-    "serverPort": 6011,
+    "serverPort": 6020,
     "flowsDirName": "flows",
     "functionNodeModules": {
       "lodash": false,

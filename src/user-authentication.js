@@ -1,4 +1,6 @@
-const axios = require('axios')
+'use strict'
+
+const Axios = require('axios')
 const Globals = require('./utils/globals')
 
 module.exports = {
@@ -23,7 +25,7 @@ module.exports = {
         config.headers.email = email
         config.headers.password = password
 
-        axios.request(config)
+        Axios.request(config)
           .then((response) => {
             resolve(_returnUserObject(Globals.config.authorization.users, email))
           }).catch((error) => {

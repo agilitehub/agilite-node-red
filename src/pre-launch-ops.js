@@ -1,8 +1,8 @@
 'use strict'
 
+const Sentry = require('@sentry/node')
 const Globals = require('./utils/globals')
 const Enums = require('./utils/enums')
-const Sentry = require('@sentry/node')
 
 const init = async () => {
   return new Promise((resolve, reject) => {

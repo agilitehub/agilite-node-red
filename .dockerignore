@@ -1,6 +1,7 @@
-config
+config/config.json
 flows
 node_modules
+src/readme-assets
 .dockerignore
 .git
 .gitignore

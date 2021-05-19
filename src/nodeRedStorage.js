@@ -1,6 +1,8 @@
+'use strict'
+
 const Agilite = require('agilite')
-const when = require('when')
-const Promise = when.promise
+const When = require('when')
+const Promise = When.promise
 const Sentry = require('@sentry/node')
 const Globals = require('./utils/globals')
 

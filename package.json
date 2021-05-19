@@ -1,7 +1,7 @@
 {
     "name": "agilite-node-red",
     "version": "7.3.1",
-    "description": "Agilit-e Node-RED",
+    "description": "An extended setup of Node-RED Server with additional production features including Agilit-e integration and authentication.",
     "main": "main.js",
     "scripts": {
         "dev": "run-script-os",
