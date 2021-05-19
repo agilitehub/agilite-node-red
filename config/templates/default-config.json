@@ -1,54 +1,55 @@
 {
-    "serverPort": 6020,
-    "flowsDirName": "flows",
-    "functionNodeModules": {
-      "lodash": false,
-      "type-detect": false,
-      "moment": false,
-      "date-fns": false,
-      "date-fns-tz": false,
-      "moment-timezone": false
+  "serverPort": 6020,
+  "flowsDirName": "flows",
+  "functionNodeModules": {
+    "lodash": false,
+    "type-detect": false,
+    "moment": false,
+    "date-fns": false,
+    "date-fns-tz": false,
+    "moment-timezone": false
+  },
+  "nodeRedSettings": {
+    "httpAdminRoot": "/",
+    "httpNodeRoot": "/api",
+    "flowFile": "flows.json",
+    "httpRequestTimeout": 300000,
+    "functionExternalModules": true,
+    "httpNodeCors": {
+      "origin": "*",
+      "methods": ["GET", "PUT", "POST", "DELETE"]
     },
-    "nodeRedSettings": {
-      "httpAdminRoot": "/",
-      "httpNodeRoot": "/api",
-      "flowFile": "flows.json",
-      "httpRequestTimeout": 300000,
-      "httpNodeCors": {
-        "origin": "*",
-        "methods": ["GET", "PUT", "POST", "DELETE"]
+    "editorTheme": {
+      "projects": {
+        "enabled": false
       },
-      "editorTheme": {
-        "projects": {
-          "enabled": false
-        },
-        "page": {
-          "title": "Agilit-e Node-RED"
-        },
-        "header": {
-          "title": "Agilit-e Node-RED",
-          "url": "https://agilite.io"
-        }
+      "page": {
+        "title": "Agilit-e Node-RED"
       },
-      "flowFilePretty": true,
-      "credentialSecret": "agilite-node-red"
-    },
-    "authorization": {
-      "enabled": false,
-      "axiosConfig": {},
-      "users": []
-    },
-    "agiliteStorage": {
-      "enabled": false,
-      "apiServerUrl": "",
-      "apiKey": ""
-    },
-    "sentry": {
-      "enabled": false,
-      "config": {
-        "dsn": "",
-        "environment": "",
-        "tracesSampleRate": 1.0
+      "header": {
+        "title": "Agilit-e Node-RED",
+        "url": "https://agilite.io"
       }
+    },
+    "flowFilePretty": true,
+    "credentialSecret": "agilite-node-red"
+  },
+  "authorization": {
+    "enabled": false,
+    "axiosConfig": {},
+    "users": []
+  },
+  "agiliteStorage": {
+    "enabled": false,
+    "apiServerUrl": "",
+    "apiKey": ""
+  },
+  "sentry": {
+    "enabled": false,
+    "config": {
+      "dsn": "",
+      "environment": "",
+      "tracesSampleRate": 1.0
     }
   }
+}
