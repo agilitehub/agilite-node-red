@@ -3,7 +3,7 @@
 const Enums = {
   DEFAULT_NODE_PORT: 80,
   DEFAULT_FLOWS_DIR_NAME: 'flows',
-  CONFIG_PATH: '../../config/config.json',
+  CONFIG_PATH: '../../config/main/config.json',
   CONFIG_DEFAULT: require('../../config/templates/default-config.json'),
   nodeEnvironment: {
     DEV: 'development',
